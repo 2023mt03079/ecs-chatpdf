@@ -1,0 +1,30 @@
+{
+  "family": "ecs-chatpdf-task",
+  "networkMode": "awsvpc",
+  "executionRoleArn": "arn:aws:iam::124355661763:role/ECSTaskExecutionRole",
+  "containerDefinitions": [
+    {
+      "name": "ecs-chatpdf-container",
+      "image": "124355661763.dkr.ecr.ap-south-1.amazonaws.com/chatpdf:latest",
+      "essential": true,
+      "portMappings": [
+        {
+          "containerPort": 8501,
+          "hostPort": 8501
+        }
+      ]
+    }
+  ],
+  "requiresCompatibilities": [
+    "FARGATE"
+  ],
+  "cpu": "256",
+  "memory": "512",
+  "networkConfiguration": {
+    "awsvpcConfiguration": {
+      "subnets": ["subnet-0c94632ab75f09530", "subnet-0be3699467fa77e8a", "subnet-091b1210b060c3222"],
+      "securityGroups": ["sg-023501211fe6b9ee6"],
+      "assignPublicIp": "ENABLED"
+    }
+  }
+}
